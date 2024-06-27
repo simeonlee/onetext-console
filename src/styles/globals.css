@@ -32,6 +32,15 @@ h6 {
     drop-shadow(0px 8.362px 2.091px rgba(0, 0, 0, 0));
 }
 
+.step-message-terminal {
+  background: theme("colors.gray.900");
+  filter: drop-shadow(0px 0px 1.045px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 1.045px 1.045px rgba(0, 0, 0, 0.07))
+    drop-shadow(0px 3.136px 2.091px rgba(0, 0, 0, 0.04))
+    drop-shadow(0px 5.226px 2.091px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 8.362px 2.091px rgba(0, 0, 0, 0));
+}
+
 /* .flow-customer-reply {
   width: 102.789px;
   height: 25px;
