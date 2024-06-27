@@ -4,6 +4,8 @@ import pizzaOrderFlow from "./pizzaOrderFlow.json";
 import MessageStepStack from "~/components/MessageStepStack";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
+import IntentAnalysisStack from "~/components/IntentAnalysisStack";
+import TriggerStack from "~/components/TriggerStack";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,29 +28,21 @@ export default function Home() {
       <div className="text-[32px] mb-10 font-display">Flow Editor</div>
 
       <div>
-        <div className="step step-trigger text-xs space-y-2">
-          <div className="text-[11px] text-gray-400 font-medium">Trigger</div>
-          <div className="text-xs">
-            <span className="text-[#ACAEB0]">When someone joins</span>{" "}
-            <span className="text-gray-900 font-medium">
-              Customers who&apos;ve expressed pizza intent
-            </span>
-          </div>
-        </div>
-
-        <div className="h-6 w-[272px] flex">
-          <div className="flex-grow h-full" />
-          <div className="flex-grow h-full border-l-2 border-gray-200" />
-        </div>
-
+        <TriggerStack />
         <MessageStepStack step={initialStep} />
+        <IntentAnalysisStack step={initialStep} />
         <div className="flex items-start">
           <MessageStepStack step={initialStep} />
           <TerminalMessageStep type="cancel" step={terminalCancelStep} />
         </div>
+        <IntentAnalysisStack step={initialStep} />
         <div className="flex items-start">
           <TerminalMessageStep type="done" step={terminalDoneStep} />
           <MessageStepStack step={initialStep} />
+        </div>
+        <div className="flex items-start">
+          <NullStepSpace />
+          <IntentAnalysisStack step={initialStep} />
         </div>
         <div className="flex items-start">
           <NullStepSpace />
