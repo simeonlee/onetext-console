@@ -1,7 +1,6 @@
 import { DEFAULT_BRAND_NAME } from "~/constants/base";
 import capitalize from "~/utils/capitalize";
 import CustomerReply from "./CustomerReply";
-import Stars01 from "./icons/Stars01";
 
 interface MessageStepStackProps {
   step: {
@@ -26,7 +25,7 @@ export default function MessageStepStack({ step }: MessageStepStackProps) {
         <div>{step.message}</div>
       </div>
 
-      {/* There may be a dependency that scales better than this - opted for a simple formulation for small scope and speed to avoid dependency trial & error, but would want to spend more time doing research or scaling out this algorithm */}
+      {/* There may be a dependency that scales better than the way I'm constructing these edges - opted for a simple formulation for small scope and speed to avoid dependency trial & error, but would want to spend more time doing research or scaling out this algorithm */}
 
       <div className="h-6 w-[272px] flex">
         <div className="flex-grow h-full" />
