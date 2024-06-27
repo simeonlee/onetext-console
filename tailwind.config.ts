@@ -25,18 +25,18 @@ const config: Config = {
         l: "Left",
       };
 
-      const createHighResBorderClass = (abbr: any, side: any) => {
+      const createOTBorderClass = (abbr: any, side: any) => {
         const className = `.ot-border${abbr ? `-${abbr}` : ""}`;
         const borderSide = side ? side : "";
 
         return {
           [className]: {
             [`border${borderSide}Width`]: "1px",
-            borderColor: "#E9F1FF",
+            borderColor: "#e9f1ff",
             borderStyle: "solid",
             [`@media (min-resolution: 192dpi), (min-resolution: 2dppx)`]: {
               [`border${borderSide}Width`]: "0.5px",
-              borderColor: "#D4E4FF",
+              borderColor: "#d4e4ff",
             },
           },
         };
@@ -44,10 +44,35 @@ const config: Config = {
 
       const componentStyles = {};
 
-      // Create high resolution border class for all sides
+      // Create branded high resolution border class for all sides
+      Object.assign(componentStyles, createOTBorderClass(null, null));
+
+      // Create branded high resolution border classes for individual sides
+      for (const [abbr, side] of Object.entries(sides)) {
+        Object.assign(componentStyles, createOTBorderClass(abbr, side));
+      }
+
+      const createHighResBorderClass = (abbr: any, side: any) => {
+        const className = `.high-res-border${abbr ? `-${abbr}` : ""}`;
+        const borderSide = side ? side : "";
+
+        return {
+          [className]: {
+            [`border${borderSide}Width`]: "1px",
+            borderColor: 'theme("colors.gray.100")',
+            borderStyle: "solid",
+            [`@media (min-resolution: 192dpi), (min-resolution: 2dppx)`]: {
+              [`border${borderSide}Width`]: "0.5px",
+              borderColor: "#edeff1",
+            },
+          },
+        };
+      };
+
+      // Create gray high resolution border class for all sides
       Object.assign(componentStyles, createHighResBorderClass(null, null));
 
-      // Create high resolution border classes for individual sides
+      // Create gray high resolution border classes for individual sides
       for (const [abbr, side] of Object.entries(sides)) {
         Object.assign(componentStyles, createHighResBorderClass(abbr, side));
       }
