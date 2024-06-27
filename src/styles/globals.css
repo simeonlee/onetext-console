@@ -2,32 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: theme("colors.gray.900");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.step {
+  width: 272px;
+  padding: 12px 14px;
+  border-radius: 14px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.step-trigger {
+  background: theme("colors.gray.100");
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.step-message-brand {
+  background: #ffffff;
+  stroke-width: 0.5px;
+  stroke: #edeff1;
+  filter: drop-shadow(0px 0px 1.045px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 1.045px 1.045px rgba(0, 0, 0, 0.07))
+    drop-shadow(0px 3.136px 2.091px rgba(0, 0, 0, 0.04))
+    drop-shadow(0px 5.226px 2.091px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 8.362px 2.091px rgba(0, 0, 0, 0));
+}
+
+/* .flow-customer-reply {
+  width: 102.789px;
+  height: 25px;
+  flex-shrink: 0;
+  fill: var(--tailwind-blue-50, #eff6ff);
+  stroke-width: 0.5px;
+  stroke: var(--tailwind-blue-200, #bfdbfe);
+} */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox and IE */
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox 64 */
+  -ms-overflow-style: none; /* IE 10 */
+}
+
+.ot-black {
+  color: #303947;
 }
