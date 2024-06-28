@@ -75,6 +75,7 @@ function FlowEditor() {
             </div>
 
             {/* render next steps */}
+
             <div>
               <div className="flow-row">
                 {initialStep.events.map((event: any) => {
@@ -107,7 +108,7 @@ function FlowEditor() {
                         key={`${event.nextStepID}-${Math.random()
                           .toString(36)
                           .substr(2, 9)}`}
-                        step={initialStep}
+                        step={nextStep}
                       />
                     )
                   );
