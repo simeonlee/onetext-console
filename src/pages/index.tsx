@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import pizzaOrderFlow from "./pizzaOrderFlow.json";
 import MessageStepStack from "~/components/MessageStepStack";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
@@ -19,8 +18,8 @@ import {
 const inter = Inter({ subsets: ["latin"] });
 
 function FlowEditor() {
-  const { setSelectedStepId } = useFlowEditor();
-  const [flowData, setFlowData] = useState(pizzaOrderFlow);
+  const { flowData, setSelectedStepId } = useFlowEditor();
+
   const flowEditorRef = useRef<HTMLDivElement>(null);
 
   const initialStep =

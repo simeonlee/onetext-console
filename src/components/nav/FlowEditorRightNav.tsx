@@ -3,14 +3,15 @@ import {
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
 } from "~/constants/base";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
-import pizzaOrderFlow from "~/pages/pizzaOrderFlow.json";
+import pizzaOrderFlow from "~/constants/pizzaOrderFlow.json";
 import { useState } from "react";
 import TextInput from "../TextInput";
 import Label from "../Label";
 import TextArea from "../TextArea";
 
 export default function FlowEditorRightNav() {
-  const { setSelectedStepId } = useFlowEditor();
+  const { setSelectedStepId, updateStepId, updateStepMessage } =
+    useFlowEditor();
 
   const { selectedStepId } = useFlowEditor();
   const selectedStep = pizzaOrderFlow.steps.find(
@@ -38,9 +39,13 @@ export default function FlowEditorRightNav() {
               <Label size="sm">Step ID</Label>
               <TextInput
                 id="stepId"
-                placeholder="Enter Step ID..."
+                placeholder="Step ID"
                 value={stepId}
-                onChange={(value) => setStepId(value)}
+                onChange={(value) => {
+                  setStepId(value);
+                  updateStepId(selectedStepId || "", value);
+                }}
+                className="font-mono"
                 hoverToEdit
               />
             </div>
@@ -51,7 +56,10 @@ export default function FlowEditorRightNav() {
                 id="stepMessage"
                 placeholder="Enter Message..."
                 value={message}
-                onChange={(value) => setMessage(value)}
+                onChange={(value) => {
+                  setMessage(value);
+                  updateStepMessage(selectedStepId || "", value);
+                }}
                 hoverToEdit
               />
             </div>
@@ -85,7 +93,7 @@ export default function FlowEditorRightNav() {
             )}
           </div>
         ) : (
-          <h5 className="text-xs text-gray-400">Select a step to edit...</h5>
+          <h5 className="text-xs text-neutral-300">Select a step to edit...</h5>
         )}
       </div>
     </div>
