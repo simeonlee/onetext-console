@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import pizzaOrderFlow from "./pizzaOrderFlow.json";
 import MessageStepStack from "~/components/MessageStepStack";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
@@ -20,8 +20,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 function FlowEditor() {
   const { setSelectedStepId } = useFlowEditor();
-
   const [flowData, setFlowData] = useState(pizzaOrderFlow);
+  const flowEditorRef = useRef<HTMLDivElement>(null);
 
   const initialStep =
     flowData?.steps?.find((step) => step.id === flowData.initialStepID) ||
@@ -41,11 +41,11 @@ function FlowEditor() {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
+    flowEditorRef.current?.addEventListener("click", handleOutsideClick);
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      flowEditorRef.current?.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  }, [flowEditorRef]);
 
   return (
     <main className={`${inter.className}`}>
@@ -56,6 +56,7 @@ function FlowEditor() {
         }}
       >
         <div
+          ref={flowEditorRef}
           className="overflow-scroll pt-12 pb-56 px-20 2xl:px-24 w-full"
           style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
         >

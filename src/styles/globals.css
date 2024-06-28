@@ -63,3 +63,46 @@ h6 {
   scrollbar-width: none; /* Firefox 64 */
   -ms-overflow-style: none; /* IE 10 */
 }
+
+.text-input-subtle-shadow {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.01), 0px 2px 1px rgba(0, 0, 0, 0.02),
+    0px 1px 1px rgba(0, 0, 0, 0.03), 0px 0px 0px rgba(0, 0, 0, 0.04),
+    0px 0px 0px rgba(0, 0, 0, 0.04);
+}
+
+.ot-ring {
+  box-sizing: border-box;
+}
+
+.ot-ring:hover,
+.ot-ring:focus {
+  box-shadow: 0 0 0 1px #e9f1ff;
+}
+
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .ot-ring:hover,
+  .ot-ring:focus {
+    box-shadow: 0 0 0 0.5px #d4e4ff;
+  }
+}
+
+.high-res-ring {
+  box-sizing: border-box;
+}
+
+.high-res-ring:hover,
+.high-res-ring:focus {
+  box-shadow: 0 0 0 1px theme("colors.gray.200");
+}
+
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .high-res-ring:hover,
+  .high-res-ring:focus {
+    box-shadow: 0 0 0 0.5px theme("colors.gray.300");
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: theme("colors.neutral.300");
+}
