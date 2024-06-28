@@ -36,13 +36,13 @@ export default function Home() {
         }}
       >
         <div
-          className="overflow-scroll py-12 px-24 w-full"
+          className="overflow-scroll py-12 px-20 2xl:px-24 w-full"
           style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
         >
           <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
           <div className="text-[32px] mb-10 font-display">Flow Editor</div>
 
-          <div>
+          <div className="w-fit">
             <div className="flex items-start">
               <TriggerStack />
             </div>
