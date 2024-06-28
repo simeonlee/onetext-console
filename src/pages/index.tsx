@@ -1,7 +1,5 @@
 import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import StandardMessageStep from "~/components/StandardMessageStep";
-import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
 import ReplyIntentStack from "~/components/ReplyIntentStack";
 import TriggerStack from "~/components/TriggerStack";
@@ -14,11 +12,12 @@ import {
   APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
 } from "~/constants/base";
+import MessageStep from "~/components/MessageStep";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function FlowEditor() {
-  const { flowData, setSelectedStepId } = useFlowEditor();
+  const { selectedStepId, setSelectedStepId, flowData } = useFlowEditor();
 
   const flowEditorRef = useRef<HTMLDivElement>(null);
 
@@ -67,21 +66,21 @@ function FlowEditor() {
               <TriggerStack />
             </div>
             <div className="flex items-start">
-              <StandardMessageStep step={initialStep} />
+              <MessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
               <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
-              <StandardMessageStep step={initialStep} />
-              <TerminalMessageStep type="cancel" step={terminalCancelStep} />
+              <MessageStep step={initialStep} />
+              <MessageStep step={terminalCancelStep} isTerminal />
             </div>
             <div className="flex items-start">
               <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
-              <TerminalMessageStep type="done" step={terminalDoneStep} />
-              <StandardMessageStep step={initialStep} />
+              <MessageStep step={terminalDoneStep} isTerminal />
+              <MessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
               <NullStepSpace />
@@ -89,13 +88,13 @@ function FlowEditor() {
             </div>
             <div className="flex items-start">
               <NullStepSpace />
-              <TerminalMessageStep type="done" step={terminalDoneStep} />
-              <TerminalMessageStep type="done" step={terminalDoneStep} />
+              <MessageStep step={terminalDoneStep} isTerminal />
+              <MessageStep step={terminalDoneStep} isTerminal />
             </div>
           </div>
         </div>
 
-        <FlowEditorRightNav />
+        {selectedStepId && <FlowEditorRightNav />}
       </div>
     </main>
   );
