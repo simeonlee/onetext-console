@@ -21,8 +21,8 @@ export default function FlowEditorRightNav() {
     >
       <div className="inline-block">
         <div className="px-6 transition-all pt-3 pb-4">
-          <h4 className="text-[11px] text-gray-400 py-2 mb-0.5">Flows</h4>
-          {selectedStep && (
+          <h4 className="text-[11px] text-gray-400 py-2 mb-0.5">Step Editor</h4>
+          {selectedStep ? (
             <div className="space-y-1">
               <h5 className="text-[13px] text-gray-600">
                 Step ID: {selectedStep.id}
@@ -46,6 +46,8 @@ export default function FlowEditorRightNav() {
                 </div>
               )}
             </div>
+          ) : (
+            <h5>Select a step in the Flow editor to edit</h5>
           )}
         </div>
       </div>

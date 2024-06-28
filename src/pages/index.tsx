@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import pizzaOrderFlow from "./pizzaOrderFlow.json";
 import MessageStepStack from "~/components/MessageStepStack";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
@@ -7,7 +7,10 @@ import NullStepSpace from "~/components/NullStepSpace";
 import IntentAnalysisStack from "~/components/IntentAnalysisStack";
 import TriggerStack from "~/components/TriggerStack";
 import FlowEditorRightNav from "~/components/nav/FlowEditorRightNav";
-import { FlowEditorProvider } from "~/contexts/FlowEditorContext";
+import {
+  FlowEditorProvider,
+  useFlowEditor,
+} from "~/contexts/FlowEditorContext";
 import {
   APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
@@ -16,6 +19,8 @@ import {
 const inter = Inter({ subsets: ["latin"] });
 
 function FlowEditor() {
+  const { setSelectedStepId } = useFlowEditor();
+
   const [flowData, setFlowData] = useState(pizzaOrderFlow);
 
   const initialStep =
@@ -27,6 +32,20 @@ function FlowEditor() {
 
   const terminalCancelStep =
     flowData?.steps?.find((step) => step.id === "cancel") || ({} as any);
+
+  // De-select step by clicking anywhere outside of a step
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (!(event.target as HTMLElement).closest(".step")) {
+      setSelectedStepId(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <main className={`${inter.className}`}>
