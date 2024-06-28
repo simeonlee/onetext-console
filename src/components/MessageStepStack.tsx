@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { DEFAULT_BRAND_NAME } from "~/constants/base";
 import capitalize from "~/utils/capitalize";
 import CustomerReply from "./CustomerReply";

@@ -4,22 +4,26 @@ import {
 } from "~/constants/base";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
 import pizzaOrderFlow from "~/constants/pizzaOrderFlow.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextInput from "../TextInput";
 import Label from "../Label";
 import TextArea from "../TextArea";
 
 export default function FlowEditorRightNav() {
-  const { setSelectedStepId, updateStepId, updateStepMessage } =
+  const { selectedStepId, setSelectedStepId, updateStepId, updateStepMessage } =
     useFlowEditor();
 
-  const { selectedStepId } = useFlowEditor();
   const selectedStep = pizzaOrderFlow.steps.find(
     (step) => step.id === selectedStepId
   );
 
-  const [stepId, setStepId] = useState(selectedStep?.id || "");
-  const [message, setMessage] = useState(selectedStep?.message || "");
+  const [stepId, setStepId] = useState<string>(selectedStep?.id || "");
+  const [message, setMessage] = useState<string>(selectedStep?.message || "");
+
+  useEffect(() => {
+    setStepId(selectedStep?.id || "");
+    setMessage(selectedStep?.message || "");
+  }, [selectedStepId, selectedStep]);
 
   return (
     <div
