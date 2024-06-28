@@ -20,32 +20,45 @@ export default function IntentAnalysisStack({
         </div>
       </div>
 
-      <div className="h-6 w-[272px] flex">
-        <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 border-gray-200" />
-      </div>
-
-      <div className="w-[272px] flex justify-center">
-        <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
-          Affirmative
-        </div>
-      </div>
-
       <div className="flex w-fit">
         <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full" />
           <div className="relative flex-grow h-full">
-            <div className="h-3 absolute inset-0 border-l-2 border-b-2 border-gray-200 rounded-bl-[14px]" />
+            <div className="h-3.5 absolute inset-0 border-l-2 border-b-2 border-gray-200 rounded-bl-[14px]" />
             <div className="h-6 absolute inset-0 border-l-2 border-gray-200" />
           </div>
         </div>
 
         <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full">
-            <div className="h-2.5" />
-            <div className="h-3.5 border-r-2 border-t-2 border-gray-200 rounded-tr-[14px]" />
+            <div className="h-3" />
+            <div className="h-3 border-r-2 border-t-2 border-gray-200 rounded-tr-[14px]" />
           </div>
           <div className="flex-grow h-full" />
+        </div>
+      </div>
+
+      <div className="flex w-fit">
+        <div className="w-[272px] flex justify-center">
+          <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
+            Affirmative
+          </div>
+        </div>
+        <div className="w-[272px] flex justify-center">
+          <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
+            Negative
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-fit">
+        <div className="h-3 w-[272px] flex">
+          <div className="flex-grow h-full" />
+          <div className="flex-grow h-full border-l-2 border-gray-200" />
+        </div>
+        <div className="h-3 w-[272px] flex">
+          <div className="flex-grow h-full" />
+          <div className="flex-grow h-full border-l-2 border-gray-200" />
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ h6 {
 }
 
 .step-message-brand:hover {
-  background: theme("colors.gray.100");
+  opacity: 0.65;
 }
 
 .step-message-terminal {
@@ -50,7 +50,7 @@ h6 {
 }
 
 .step-message-terminal:hover {
-  background: theme("colors.gray.700");
+  opacity: 0.8;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
