@@ -10,6 +10,8 @@ import Label from "../Label";
 import TextArea from "../TextArea";
 
 export default function FlowEditorRightNav() {
+  const { setSelectedStepId } = useFlowEditor();
+
   const { selectedStepId } = useFlowEditor();
   const selectedStep = pizzaOrderFlow.steps.find(
     (step) => step.id === selectedStepId
@@ -38,7 +40,7 @@ export default function FlowEditorRightNav() {
                 id="stepId"
                 placeholder="Enter Step ID..."
                 value={stepId}
-                onChange={(e) => setStepId(e.target.value)}
+                onChange={(value) => setStepId(value)}
                 hoverToEdit
               />
             </div>
@@ -49,21 +51,36 @@ export default function FlowEditorRightNav() {
                 id="stepMessage"
                 placeholder="Enter Message..."
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(value) => setMessage(value)}
                 hoverToEdit
               />
             </div>
 
             {selectedStep.events && (
               <div className="text-[12px] text-gray-500">
-                <h6 className="ot-black font-medium mb-2">User Intentions</h6>
-                <ul className="list-disc list-inside">
+                <Label size="sm" className="mb-2.5">
+                  Customer Intentions
+                </Label>
+
+                <div className="space-y-3">
                   {selectedStep.events.map((event, index) => (
-                    <li key={index}>
-                      {event.intent} - Next Step: {event.nextStepID}
-                    </li>
+                    <div
+                      key={index}
+                      className="cursor-pointer rounded-xl ot-border border-purple-100 hover:border-purple-200 px-2.5 py-2.5 leading-[18px] bg-white hover:bg-purple-100 subtle-shadow -mx-2"
+                      onClick={() => setSelectedStepId(event.nextStepID)}
+                    >
+                      <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px] mb-2.5 -ml-[1px]">
+                        {event.intent.split(":")[0]}
+                      </div>
+                      <Label size="sm" className="mb-1">
+                        Next Step
+                      </Label>
+                      <div className="font-mono text-[11px]">
+                        {event.nextStepID}
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
           </div>

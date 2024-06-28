@@ -26,7 +26,7 @@ export default function IntentAnalysisStack({
       </div>
 
       <div className="w-[272px] flex justify-center">
-        <div className="rounded-full high-res-border border-gray-300 bg-white text-[11px] text-gray-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
+        <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
           Affirmative
         </div>
       </div>

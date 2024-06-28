@@ -65,11 +65,11 @@ const TextInput: React.ForwardRefRenderFunction<
       "px-3 py-2 text-sm": size === "sm",
       "px-3 py-4 text-md": size === "lg",
       "pointer-events-none": editable === false,
-      "text-input-subtle-shadow ot-border focus:border-blue-200": !hoverToEdit,
+      "subtle-shadow ot-border focus:border-blue-200": !hoverToEdit,
       "!py-1.5 !p-2 !-my-1.5 !-m-2 rounded-lg text-gray-600 transition-all":
         hoverToEdit,
       "!text-[13px] !leading-[24px]": hoverToEdit,
-      "ot-ring focus:text-gray-300 hover:text-gray-300":
+      "ot-ring ot-black focus:text-gray-900 hover:text-gray-900":
         editable && hoverToEdit,
     }
   );
