@@ -1,4 +1,4 @@
-import { DEFAULT_BRAND_NAME } from "~/constants/base";
+import { DEFAULT_BRAND_NAME, FLOW_EDITOR_COLUMN_WIDTH } from "~/constants/base";
 import capitalize from "~/utils/capitalize";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
 import StandardMessageOutline from "./MessageOutline";
@@ -21,7 +21,8 @@ export default function MessageStepStack({ step }: MessageStepStackProps) {
   return (
     <div className="flex flex-col items-start">
       <div
-        className="relative w-[272px] h-[59px] step-message-brand text-xs cursor-pointer"
+        className="relative step-message-brand text-xs cursor-pointer"
+        style={{ width: FLOW_EDITOR_COLUMN_WIDTH, height: 59 }}
         onClick={handleClick}
       >
         <StandardMessageOutline borderColor="#d5d6d7" />

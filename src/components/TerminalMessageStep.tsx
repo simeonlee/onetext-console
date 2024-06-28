@@ -1,7 +1,7 @@
 // TerminalMessageStep would be a typified step available in the subleft nav
 
 import { useEffect, useRef } from "react";
-import { DEFAULT_BRAND_NAME } from "~/constants/base";
+import { DEFAULT_BRAND_NAME, FLOW_EDITOR_COLUMN_WIDTH } from "~/constants/base";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
 import capitalize from "~/utils/capitalize";
 import MessageOutline from "./MessageOutline";
@@ -28,7 +28,8 @@ export default function TerminalMessageStep({
   return (
     <div className="flex flex-col items-start">
       <div
-        className="relative w-[272px] h-[59px] step-message-brand text-xs cursor-pointer"
+        className="relative step-message-brand text-xs cursor-pointer"
+        style={{ width: FLOW_EDITOR_COLUMN_WIDTH, height: 59 }}
         onClick={handleClick}
       >
         <MessageOutline background="#111827" />

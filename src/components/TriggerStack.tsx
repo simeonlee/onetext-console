@@ -1,3 +1,5 @@
+import { FLOW_EDITOR_COLUMN_WIDTH } from "~/constants/base";
+
 // Omitting props for demo
 interface TriggerStackProps {}
 
@@ -14,7 +16,7 @@ export default function TriggerStack({}: TriggerStackProps) {
         </div>
       </div>
 
-      <div className="h-6 w-[272px] flex">
+      <div className="h-6 flex" style={{ width: FLOW_EDITOR_COLUMN_WIDTH }}>
         <div className="flex-grow h-full" />
         <div className="flex-grow h-full border-l-2 border-gray-200" />
       </div>
