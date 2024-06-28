@@ -3,17 +3,21 @@ import {
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
 } from "~/constants/base";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
-import pizzaOrderFlow from "~/constants/pizzaOrderFlow.json";
 import { useEffect, useState } from "react";
 import TextInput from "../TextInput";
 import Label from "../Label";
 import TextArea from "../TextArea";
 
 export default function FlowEditorRightNav() {
-  const { selectedStepId, setSelectedStepId, updateStepId, updateStepMessage } =
-    useFlowEditor();
+  const {
+    flowData,
+    selectedStepId,
+    setSelectedStepId,
+    updateStepId,
+    updateStepMessage,
+  } = useFlowEditor();
 
-  const selectedStep = pizzaOrderFlow.steps.find(
+  const selectedStep = flowData.steps.find(
     (step) => step.id === selectedStepId
   );
 
