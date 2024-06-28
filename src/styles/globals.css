@@ -49,15 +49,6 @@ h6 {
   background: theme("colors.gray.700");
 }
 
-/* .flow-customer-reply {
-  width: 102.789px;
-  height: 25px;
-  flex-shrink: 0;
-  fill: var(--tailwind-blue-50, #eff6ff);
-  stroke-width: 0.5px;
-  stroke: var(--tailwind-blue-200, #bfdbfe);
-} */
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
