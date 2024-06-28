@@ -2,7 +2,7 @@ import CustomerReply from "./CustomerReply";
 import { DownAndRightEdges, DownEdge, RightAndDownEdge } from "./Edges";
 import Stars01 from "./icons/Stars01";
 
-interface IntentAnalysisStackProps {
+interface ReplyStackProps {
   step: {
     id: string;
     type: string;
@@ -15,9 +15,7 @@ interface IntentAnalysisStackProps {
   };
 }
 
-export default function IntentAnalysisStack({
-  step,
-}: IntentAnalysisStackProps) {
+export default function ReplyStack({ step }: ReplyStackProps) {
   return (
     <div className="flex flex-col items-start">
       {/* The following renders a singular vertical straight line */}

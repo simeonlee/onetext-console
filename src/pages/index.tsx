@@ -56,7 +56,11 @@ function FlowEditor() {
         <div
           ref={flowEditorRef}
           className="overflow-scroll pt-12 pb-56 px-20 2xl:px-24 w-full"
-          style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
+          style={{
+            width: `calc(100% - ${
+              selectedStepId ? rightNavWidth + "px" : "0px"
+            })`,
+          }}
         >
           <div className="flow-header">
             <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
