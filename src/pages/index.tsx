@@ -7,6 +7,7 @@ import NullStepSpace from "~/components/NullStepSpace";
 import IntentAnalysisStack from "~/components/IntentAnalysisStack";
 import TriggerStack from "~/components/TriggerStack";
 import FlowEditorRightNav from "~/components/nav/FlowEditorRightNav";
+import { FlowEditorProvider } from "~/contexts/FlowEditorContext";
 import {
   APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
@@ -14,7 +15,7 @@ import {
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+function FlowEditor() {
   const [flowData, setFlowData] = useState(pizzaOrderFlow);
 
   const initialStep =
@@ -80,3 +81,11 @@ export default function Home() {
     </main>
   );
 }
+
+const FlowEditorWithProvider = () => (
+  <FlowEditorProvider>
+    <FlowEditor />
+  </FlowEditorProvider>
+);
+
+export default FlowEditorWithProvider;
