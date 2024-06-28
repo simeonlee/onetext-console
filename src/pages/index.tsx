@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import MessageStep from "~/components/MessageStep";
+import StandardMessageStep from "~/components/StandardMessageStep";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
 import ReplyIntentStack from "~/components/ReplyIntentStack";
@@ -67,13 +67,13 @@ function FlowEditor() {
               <TriggerStack />
             </div>
             <div className="flex items-start">
-              <MessageStep step={initialStep} />
+              <StandardMessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
               <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
-              <MessageStep step={initialStep} />
+              <StandardMessageStep step={initialStep} />
               <TerminalMessageStep type="cancel" step={terminalCancelStep} />
             </div>
             <div className="flex items-start">
@@ -81,7 +81,7 @@ function FlowEditor() {
             </div>
             <div className="flex items-start">
               <TerminalMessageStep type="done" step={terminalDoneStep} />
-              <MessageStep step={initialStep} />
+              <StandardMessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
               <NullStepSpace />

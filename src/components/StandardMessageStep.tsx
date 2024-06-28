@@ -1,13 +1,9 @@
-// TerminalMessageStep would be a typified step available in the subleft nav
-
-import { useEffect, useRef } from "react";
 import { DEFAULT_BRAND_NAME } from "~/constants/base";
-import { useFlowEditor } from "~/contexts/FlowEditorContext";
 import capitalize from "~/utils/capitalize";
-import MessageOutline from "./MessageOutline";
+import { useFlowEditor } from "~/contexts/FlowEditorContext";
+import StandardMessageOutline from "./MessageOutline";
 
-interface TerminalMessageStepProps {
-  type: "done" | "cancel";
+interface MessageStepStackProps {
   step: {
     id: string;
     type: string;
@@ -15,10 +11,7 @@ interface TerminalMessageStepProps {
   };
 }
 
-export default function TerminalMessageStep({
-  type,
-  step,
-}: TerminalMessageStepProps) {
+export default function MessageStepStack({ step }: MessageStepStackProps) {
   const { setSelectedStepId } = useFlowEditor();
 
   const handleClick = () => {
@@ -31,18 +24,18 @@ export default function TerminalMessageStep({
         className="relative w-[272px] h-[59px] step-message-brand text-xs cursor-pointer"
         onClick={handleClick}
       >
-        <MessageOutline background="#111827" />
+        <StandardMessageOutline borderColor="#d5d6d7" />
 
         <div className="py-2.5 px-3 absolute inset-0 space-y-2">
           <div className="flex items-center justify-between">
-            <div className="text-[11px] text-blue-300 font-medium">
+            <div className="text-[11px] text-[#1A76FC] font-medium">
               {step.type === "message"
                 ? `${DEFAULT_BRAND_NAME} ${capitalize(step.type)}`
                 : step.type}
             </div>
             <div className="text-[10px] font-mono text-gray-400">{step.id}</div>
           </div>
-          <div className="text-gray-100 truncate max-h-6 overflow-hidden">
+          <div className="text-gray-900 truncate max-h-6 overflow-hidden">
             {step.message}
           </div>
         </div>
