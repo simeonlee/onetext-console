@@ -21,7 +21,7 @@ export default function MessageStep({
   step,
   isTerminal = false,
 }: MessageStepProps) {
-  const { setSelectedStepId } = useFlowEditor();
+  const { selectedStepId, setSelectedStepId } = useFlowEditor();
 
   const handleClick = () => {
     setSelectedStepId(step.id);
@@ -35,7 +35,13 @@ export default function MessageStep({
         onClick={handleClick}
       >
         <StandardMessageOutline
-          borderColor={isTerminal ? undefined : "#d5d6d7"}
+          borderColor={
+            step.id === selectedStepId
+              ? "#4299e1"
+              : isTerminal
+              ? undefined
+              : "#d5d6d7"
+          }
           background={isTerminal ? "#111827" : undefined}
         />
 
