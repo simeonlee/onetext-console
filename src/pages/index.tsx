@@ -81,6 +81,7 @@ function FlowEditor() {
                   const nextStep = flowData?.steps?.find(
                     (step) => step.id === event.nextStepID
                   );
+                  if (!nextStep) return;
                   const isTerminal = !nextStep?.events;
                   return (
                     <MessageStep
@@ -129,7 +130,7 @@ function FlowEditor() {
                     const nextNextStep = flowData?.steps?.find(
                       (step) => step.id === event.nextStepID
                     );
-
+                    if (!nextNextStep) return;
                     const isTerminal = !nextNextStep?.events;
 
                     return (
@@ -239,7 +240,7 @@ function FlowEditor() {
                         const nextNextNextStep = flowData?.steps?.find(
                           (step) => step.id === event.nextStepID
                         );
-
+                        if (!nextNextNextStep) return;
                         const isTerminal = !nextNextNextStep?.events;
 
                         return (

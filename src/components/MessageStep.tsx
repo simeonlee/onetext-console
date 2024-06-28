@@ -4,7 +4,7 @@ import { useFlowEditor } from "~/contexts/FlowEditorContext";
 import StandardMessageOutline from "./MessageOutline";
 
 interface MessageStepProps {
-  step?: {
+  step: {
     id: string;
     type: string;
     message: string;
