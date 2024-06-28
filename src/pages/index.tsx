@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import NullStepSpace from "~/components/NullStepSpace";
-import ReplyIntentStack from "~/components/ReplyIntentStack";
+import ReplyStack from "~/components/ReplyStack";
 import TriggerStack from "~/components/TriggerStack";
 import FlowEditorRightNav from "~/components/nav/FlowEditorRightNav";
 import {
@@ -11,6 +11,7 @@ import {
 import {
   APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
+  FLOW_EDITOR_COLUMN_GAP,
 } from "~/constants/base";
 import MessageStep from "~/components/MessageStep";
 
@@ -58,35 +59,37 @@ function FlowEditor() {
           className="overflow-scroll pt-12 pb-56 px-20 2xl:px-24 w-full"
           style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
         >
-          <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
-          <div className="text-[32px] mb-10 font-display">Flow Editor</div>
+          <div className="flow-header">
+            <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
+            <div className="text-[32px] font-display">Flow Editor</div>
+          </div>
 
           <div className="w-fit">
-            <div className="flex items-start">
+            <div className="flow-row">
               <TriggerStack />
             </div>
-            <div className="flex items-start">
+            <div className="flow-row">
               <MessageStep step={initialStep} />
             </div>
-            <div className="flex items-start">
-              <ReplyIntentStack step={initialStep} />
+            <div className="flow-row">
+              <ReplyStack step={initialStep} />
             </div>
-            <div className="flex items-start">
+            <div className="flow-row">
               <MessageStep step={initialStep} />
               <MessageStep step={terminalCancelStep} isTerminal />
             </div>
-            <div className="flex items-start">
-              <ReplyIntentStack step={initialStep} />
+            <div className="flow-row">
+              <ReplyStack step={initialStep} />
             </div>
-            <div className="flex items-start">
+            <div className="flow-row">
               <MessageStep step={terminalDoneStep} isTerminal />
               <MessageStep step={initialStep} />
             </div>
-            <div className="flex items-start">
+            <div className="flow-row">
               <NullStepSpace />
-              <ReplyIntentStack step={initialStep} />
+              <ReplyStack step={initialStep} />
             </div>
-            <div className="flex items-start">
+            <div className="flow-row">
               <NullStepSpace />
               <MessageStep step={terminalDoneStep} isTerminal />
               <MessageStep step={terminalDoneStep} isTerminal />

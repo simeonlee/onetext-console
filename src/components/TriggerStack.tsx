@@ -5,7 +5,7 @@ interface TriggerStackProps {}
 
 export default function TriggerStack({}: TriggerStackProps) {
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start flow-col-margin">
       <div className="step step-trigger text-xs space-y-2">
         <div className="text-[11px] text-gray-400 font-medium">Trigger</div>
         <div className="text-xs">

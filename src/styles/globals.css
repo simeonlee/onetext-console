@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --flow-editor-column-width: 272px;
+  --flow-editor-column-gap: 64px;
+}
+
 h1,
 h2,
 h3,
@@ -16,7 +21,7 @@ h6 {
 }
 
 .step {
-  width: 272px;
+  width: var(--flow-editor-column-width);
   padding: 12px 14px;
   border-radius: 14px;
 }
@@ -109,4 +114,36 @@ textarea::placeholder {
 
 .edge {
   border-color: theme("colors.gray.200");
+}
+
+.flow-row {
+  display: flex;
+  align-items: flex-start;
+  /* gap: 0 var(--flow-editor-column-gap); */
+}
+
+.flow-col {
+  display: flex;
+  width: var(--flow-editor-column-width);
+  /* padding: 0 calc(var(--flow-editor-column-gap) / 2); */
+}
+
+.flow-col-width {
+  width: var(--flow-editor-column-width);
+}
+
+.flow-col-width-including-padding {
+  width: calc(var(--flow-editor-column-width) + var(--flow-editor-column-gap));
+}
+
+.flow-col-padding {
+  padding: 0 calc(var(--flow-editor-column-gap) / 2);
+}
+
+.flow-col-margin {
+  margin: 0 calc(var(--flow-editor-column-gap) / 2);
+}
+
+.flow-header {
+  margin: 0 calc(var(--flow-editor-column-gap) / 2) 40px;
 }

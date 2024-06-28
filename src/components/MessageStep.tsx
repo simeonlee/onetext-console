@@ -23,7 +23,7 @@ export default function MessageStep({
   };
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start flow-col-margin">
       <div
         className="relative step-message-brand text-xs cursor-pointer"
         style={{ width: FLOW_EDITOR_COLUMN_WIDTH, height: 59 }}
