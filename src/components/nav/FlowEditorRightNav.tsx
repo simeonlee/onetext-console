@@ -19,37 +19,33 @@ export default function FlowEditorRightNav() {
         width: `${rightNavWidth}px`,
       }}
     >
-      <div className="inline-block">
-        <div className="px-6 transition-all pt-3 pb-4">
-          <h4 className="text-[11px] text-gray-400 py-2 mb-0.5">Step Editor</h4>
-          {selectedStep ? (
-            <div className="space-y-1">
-              <h5 className="text-[13px] text-gray-600">
-                Step ID: {selectedStep.id}
-              </h5>
-              <p className="text-[12px] text-gray-500">
-                Type: {selectedStep.type}
-              </p>
-              <p className="text-[12px] text-gray-500">
-                Message: {selectedStep.message}
-              </p>
-              {selectedStep.events && (
-                <div className="text-[12px] text-gray-500">
-                  <p>Subevents:</p>
-                  <ul className="list-disc list-inside">
-                    {selectedStep.events.map((event, index) => (
-                      <li key={index}>
-                        {event.intent} - Next Step: {event.nextStepID}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          ) : (
-            <h5>Select a step in the Flow editor to edit</h5>
-          )}
-        </div>
+      <div className="px-5 transition-all pt-3 pb-5 overflow-y-scroll scrollbar-none">
+        <h4 className="text-[11px] text-gray-400 py-2 mb-0.5">Step Editor</h4>
+        {selectedStep ? (
+          <div className="space-y-1">
+            <h5 className="text-[13px] ot-black">Step ID: {selectedStep.id}</h5>
+            <p className="text-[12px] text-gray-500">
+              Type: {selectedStep.type}
+            </p>
+            <p className="text-[12px] text-gray-500">
+              Message: {selectedStep.message}
+            </p>
+            {selectedStep.events && (
+              <div className="text-[12px] text-gray-500">
+                <p>Subevents:</p>
+                <ul className="list-disc list-inside">
+                  {selectedStep.events.map((event, index) => (
+                    <li key={index}>
+                      {event.intent} - Next Step: {event.nextStepID}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ) : (
+          <h5 className="text-xs text-gray-400">Select a step to edit...</h5>
+        )}
       </div>
     </div>
   );

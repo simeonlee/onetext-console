@@ -11,6 +11,10 @@ h6 {
   color: theme("colors.gray.900");
 }
 
+.ot-black {
+  color: #303947;
+}
+
 .step {
   width: 272px;
   padding: 12px 14px;
@@ -58,8 +62,4 @@ h6 {
 .scrollbar-none {
   scrollbar-width: none; /* Firefox 64 */
   -ms-overflow-style: none; /* IE 10 */
-}
-
-.ot-black {
-  color: #303947;
 }
