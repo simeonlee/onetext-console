@@ -222,7 +222,6 @@ function FlowEditor() {
                             step={nextNextNextStep}
                             isTerminal={isTerminal}
                           />
-                          // )
                         );
                       })
                     );
