@@ -25,12 +25,6 @@ function FlowEditor() {
     flowData?.steps?.find((step) => step.id === flowData.initialStepID) ||
     ({} as any);
 
-  const terminalDoneStep =
-    flowData?.steps?.find((step) => step.id === "done") || ({} as any);
-
-  const terminalCancelStep =
-    flowData?.steps?.find((step) => step.id === "cancel") || ({} as any);
-
   // De-select step by clicking anywhere outside of a step
   const handleOutsideClick = (event: MouseEvent) => {
     if (!(event.target as HTMLElement).closest(".step")) {
@@ -186,11 +180,6 @@ function FlowEditor() {
                   );
                 })}
               </div>
-
-              {/* <div className="flow-row">
-                <NullStepSpace />
-                <ReplyStack step={initialStep} />
-              </div> */}
             </div>
 
             {/* render next next next steps */}
@@ -240,10 +229,6 @@ function FlowEditor() {
                   })
                 );
               })}
-
-              {/* <NullStepSpace />
-              <MessageStep step={terminalDoneStep} isTerminal />
-              <MessageStep step={terminalDoneStep} isTerminal /> */}
             </div>
           </div>
         </div>
