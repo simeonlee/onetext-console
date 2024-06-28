@@ -153,7 +153,14 @@ function FlowEditor() {
 
                   const isTerminal = !nextStep?.events;
 
-                  if (isTerminal) return <NullStepSpace />;
+                  if (isTerminal)
+                    return (
+                      <NullStepSpace
+                        key={`${event.nextStepID}-${Math.random()
+                          .toString(36)
+                          .substr(2, 9)}`}
+                      />
+                    );
 
                   return (
                     !isTerminal &&
@@ -164,7 +171,14 @@ function FlowEditor() {
 
                       const isTerminal = !nextNextStep?.events;
 
-                      if (isTerminal) return <NullStepSpace />;
+                      if (isTerminal)
+                        return (
+                          <NullStepSpace
+                            key={`${event.nextStepID}-${Math.random()
+                              .toString(36)
+                              .substr(2, 9)}`}
+                          />
+                        );
 
                       return (
                         !isTerminal && (
@@ -192,7 +206,14 @@ function FlowEditor() {
 
                 const isTerminal = !nextStep?.events;
 
-                if (isTerminal) return <NullStepSpace />;
+                if (isTerminal)
+                  return (
+                    <NullStepSpace
+                      key={`${event.nextStepID}-${Math.random()
+                        .toString(36)
+                        .substr(2, 9)}`}
+                    />
+                  );
 
                 return (
                   !isTerminal &&
@@ -203,7 +224,14 @@ function FlowEditor() {
 
                     const isTerminal = !nextNextStep?.events;
 
-                    if (isTerminal) return <NullStepSpace />;
+                    if (isTerminal)
+                      return (
+                        <NullStepSpace
+                          key={`${event.nextStepID}-${Math.random()
+                            .toString(36)
+                            .substr(2, 9)}`}
+                        />
+                      );
 
                     return (
                       !isTerminal &&

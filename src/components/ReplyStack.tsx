@@ -40,7 +40,15 @@ export default function ReplyStack({ step }: ReplyStackProps) {
       {/* The following renders straight and curved lines connecting intent analysis to the reply intent event chips below */}
       <div className="flex w-fit">
         {step.events.map((_, index) =>
-          index === 0 ? <DownAndRightEdges /> : <RightAndDownEdge />
+          index === 0 ? (
+            <DownAndRightEdges
+              key={`${index}-${Math.random().toString(36).substr(2, 9)}`}
+            />
+          ) : (
+            <RightAndDownEdge
+              key={`${index}-${Math.random().toString(36).substr(2, 9)}`}
+            />
+          )
         )}
       </div>
 
@@ -48,7 +56,7 @@ export default function ReplyStack({ step }: ReplyStackProps) {
       <div className="flex w-fit">
         {step.events.map((event, index) => (
           <div
-            key={index}
+            key={`${index}-${Math.random().toString(36).substr(2, 9)}`}
             className="flow-col-width flow-col-margin flex justify-center"
           >
             <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
@@ -61,7 +69,9 @@ export default function ReplyStack({ step }: ReplyStackProps) {
       {/* The following renders straight lines down from each event */}
       <div className="flex w-fit">
         {step.events.map((_, index) => (
-          <DownEdge key={index} />
+          <DownEdge
+            key={`${index}-${Math.random().toString(36).substr(2, 9)}`}
+          />
         ))}
       </div>
     </div>
