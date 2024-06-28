@@ -235,6 +235,8 @@ function FlowEditor() {
                         />
                       );
 
+                    // TODO: I appear to be rendering an extra NullStepSpace here - would squash in recursive refactor
+
                     return (
                       !isTerminal &&
                       nextNextStep.events.map((event: any) => {
