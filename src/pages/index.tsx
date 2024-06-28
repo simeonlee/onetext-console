@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import NullStepSpace from "~/components/NullStepSpace";
 import ReplyStack from "~/components/ReplyStack";
 import TriggerStack from "~/components/TriggerStack";
@@ -67,31 +67,179 @@ function FlowEditor() {
             <div className="flow-row">
               <TriggerStack />
             </div>
+
+            {/* render initial step */}
             <div className="flow-row">
               <MessageStep step={initialStep} />
             </div>
             <div className="flow-row">
               <ReplyStack step={initialStep} />
             </div>
-            <div className="flow-row">
-              <MessageStep step={initialStep} />
-              <MessageStep step={terminalCancelStep} isTerminal />
+
+            {/* render next steps */}
+            <div>
+              <div className="flow-row">
+                {initialStep.events.map((event: any) => {
+                  const nextStep = flowData?.steps?.find(
+                    (step) => step.id === event.nextStepID
+                  );
+                  const isTerminal = !nextStep?.events;
+                  return (
+                    <MessageStep
+                      key={`${event.nextStepID}-${Math.random()
+                        .toString(36)
+                        .substr(2, 9)}`}
+                      step={nextStep}
+                      isTerminal={isTerminal}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flow-row">
+                {initialStep.events.map((event: any) => {
+                  const nextStep = flowData?.steps?.find(
+                    (step) => step.id === event.nextStepID
+                  );
+                  const isTerminal = !nextStep?.events;
+                  return (
+                    !isTerminal && (
+                      <ReplyStack
+                        key={`${event.nextStepID}-${Math.random()
+                          .toString(36)
+                          .substr(2, 9)}`}
+                        step={initialStep}
+                      />
+                    )
+                  );
+                })}
+              </div>
             </div>
-            <div className="flow-row">
-              <ReplyStack step={initialStep} />
+
+            {/* render next next steps */}
+
+            <div>
+              <div className="flow-row">
+                {initialStep.events.flatMap((event: any) => {
+                  const nextStep = flowData?.steps?.find(
+                    (step) => step.id === event.nextStepID
+                  );
+
+                  if (!nextStep?.events) return [];
+
+                  return nextStep.events.map((event: any) => {
+                    const nextNextStep = flowData?.steps?.find(
+                      (step) => step.id === event.nextStepID
+                    );
+
+                    const isTerminal = !nextNextStep?.events;
+
+                    return (
+                      <MessageStep
+                        key={`${event.nextStepID}-${Math.random()
+                          .toString(36)
+                          .substr(2, 9)}`}
+                        step={nextNextStep}
+                        isTerminal={isTerminal}
+                      />
+                    );
+                  });
+                })}
+              </div>
+
+              <div className="flow-row">
+                {initialStep.events.flatMap((event: any) => {
+                  const nextStep = flowData?.steps?.find(
+                    (step) => step.id === event.nextStepID
+                  );
+
+                  const isTerminal = !nextStep?.events;
+
+                  if (isTerminal) return <NullStepSpace />;
+
+                  return (
+                    !isTerminal &&
+                    nextStep.events.map((event: any) => {
+                      const nextNextStep = flowData?.steps?.find(
+                        (step) => step.id === event.nextStepID
+                      );
+
+                      const isTerminal = !nextNextStep?.events;
+
+                      if (isTerminal) return <NullStepSpace />;
+
+                      return (
+                        !isTerminal && (
+                          <ReplyStack
+                            key={`${event.nextStepID}-${Math.random()
+                              .toString(36)
+                              .substr(2, 9)}`}
+                            step={nextNextStep}
+                          />
+                        )
+                      );
+                    })
+                  );
+                })}
+              </div>
+
+              {/* <div className="flow-row">
+                <NullStepSpace />
+                <ReplyStack step={initialStep} />
+              </div> */}
             </div>
+
+            {/* render next next next steps */}
+
             <div className="flow-row">
+              {initialStep.events.flatMap((event: any) => {
+                const nextStep = flowData?.steps?.find(
+                  (step) => step.id === event.nextStepID
+                );
+
+                const isTerminal = !nextStep?.events;
+
+                if (isTerminal) return <NullStepSpace />;
+
+                return (
+                  !isTerminal &&
+                  nextStep.events.flatMap((event: any) => {
+                    const nextNextStep = flowData?.steps?.find(
+                      (step) => step.id === event.nextStepID
+                    );
+
+                    const isTerminal = !nextNextStep?.events;
+
+                    if (isTerminal) return <NullStepSpace />;
+
+                    return (
+                      !isTerminal &&
+                      nextNextStep.events.map((event: any) => {
+                        const nextNextNextStep = flowData?.steps?.find(
+                          (step) => step.id === event.nextStepID
+                        );
+
+                        const isTerminal = !nextNextNextStep?.events;
+
+                        return (
+                          <MessageStep
+                            key={`${event.nextStepID}-${Math.random()
+                              .toString(36)
+                              .substr(2, 9)}`}
+                            step={nextNextNextStep}
+                            isTerminal={isTerminal}
+                          />
+                          // )
+                        );
+                      })
+                    );
+                  })
+                );
+              })}
+
+              {/* <NullStepSpace />
               <MessageStep step={terminalDoneStep} isTerminal />
-              <MessageStep step={initialStep} />
-            </div>
-            <div className="flow-row">
-              <NullStepSpace />
-              <ReplyStack step={initialStep} />
-            </div>
-            <div className="flow-row">
-              <NullStepSpace />
-              <MessageStep step={terminalDoneStep} isTerminal />
-              <MessageStep step={terminalDoneStep} isTerminal />
+              <MessageStep step={terminalDoneStep} isTerminal /> */}
             </div>
           </div>
         </div>

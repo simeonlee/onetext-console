@@ -2,7 +2,7 @@
 
 export default function NullStepSpace() {
   return (
-    <div className="flow-col-margin flex items-start">
+    <div className="null-step-space flow-col-margin flex items-start">
       <div className="step" />
     </div>
   );

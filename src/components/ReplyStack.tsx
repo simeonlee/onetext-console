@@ -41,8 +41,9 @@ export default function IntentAnalysisStack({
 
       {/* The following renders straight and curved lines connecting intent analysis to the reply intent event chips below */}
       <div className="flex w-fit">
-        <DownAndRightEdges />
-        <RightAndDownEdge />
+        {step.events.map((_, index) =>
+          index === 0 ? <DownAndRightEdges /> : <RightAndDownEdge />
+        )}
       </div>
 
       {/* The following renders reply intent event chips */}
