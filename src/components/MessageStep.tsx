@@ -1,6 +1,5 @@
 import { DEFAULT_BRAND_NAME } from "~/constants/base";
 import capitalize from "~/utils/capitalize";
-import CustomerReply from "./CustomerReply";
 import { useFlowEditor } from "~/contexts/FlowEditorContext";
 
 interface MessageStepStackProps {
@@ -32,23 +31,9 @@ export default function MessageStepStack({ step }: MessageStepStackProps) {
           </div>
           <div className="text-[10px] font-mono text-gray-400">{step.id}</div>
         </div>
-        <div>{step.message}</div>
-      </div>
-
-      {/* There may be a dependency that scales better than the way I'm constructing these edges - opted for a simple formulation for small scope and speed to avoid dependency trial & error, but would want to spend more time doing research or scaling out this algorithm */}
-
-      <div className="h-6 w-[272px] flex">
-        <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 edge" />
-      </div>
-
-      <div className="flex justify-center w-[272px]">
-        <CustomerReply />
-      </div>
-
-      <div className="h-6 w-[272px] flex">
-        <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 edge" />
+        <div className="text-gray-900 truncate max-h-6 overflow-hidden">
+          {step.message}
+        </div>
       </div>
     </div>
   );

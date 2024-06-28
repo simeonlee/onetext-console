@@ -1,6 +1,6 @@
 export default function CustomerReply() {
   return (
-    <div className="relative w-fit flex items-center justify-center">
+    <div className="relative w-fit flex items-center justify-center pl-0.5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="106"
@@ -37,7 +37,7 @@ export default function CustomerReply() {
         />
       </svg>
 
-      <div className="text-[11px] font-medium text-blue-400 absolute inset-0 flex items-center justify-center pr-[3px]">
+      <div className="text-[11px] font-medium text-blue-400 absolute inset-0 flex items-center justify-center pr-[2px]">
         Customer Reply
       </div>
     </div>

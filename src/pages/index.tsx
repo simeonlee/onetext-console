@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import MessageStepStack from "~/components/MessageStepStack";
+import MessageStep from "~/components/MessageStep";
 import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
-import IntentAnalysisStack from "~/components/IntentAnalysisStack";
+import ReplyIntentStack from "~/components/ReplyIntentStack";
 import TriggerStack from "~/components/TriggerStack";
 import FlowEditorRightNav from "~/components/nav/FlowEditorRightNav";
 import {
@@ -67,25 +67,25 @@ function FlowEditor() {
               <TriggerStack />
             </div>
             <div className="flex items-start">
-              <MessageStepStack step={initialStep} />
+              <MessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
-              <IntentAnalysisStack step={initialStep} />
+              <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
-              <MessageStepStack step={initialStep} />
+              <MessageStep step={initialStep} />
               <TerminalMessageStep type="cancel" step={terminalCancelStep} />
             </div>
             <div className="flex items-start">
-              <IntentAnalysisStack step={initialStep} />
+              <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
               <TerminalMessageStep type="done" step={terminalDoneStep} />
-              <MessageStepStack step={initialStep} />
+              <MessageStep step={initialStep} />
             </div>
             <div className="flex items-start">
               <NullStepSpace />
-              <IntentAnalysisStack step={initialStep} />
+              <ReplyIntentStack step={initialStep} />
             </div>
             <div className="flex items-start">
               <NullStepSpace />

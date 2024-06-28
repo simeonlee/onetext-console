@@ -1,3 +1,4 @@
+import CustomerReply from "./CustomerReply";
 import Stars01 from "./icons/Stars01";
 
 interface IntentAnalysisStackProps {
@@ -13,8 +14,22 @@ export default function IntentAnalysisStack({
 }: IntentAnalysisStackProps) {
   return (
     <div className="flex flex-col items-start">
+      <div className="h-6 w-[272px] flex">
+        <div className="flex-grow h-full" />
+        <div className="flex-grow h-full border-l-2 edge" />
+      </div>
+
       <div className="flex justify-center w-[272px]">
-        <div className="rounded-full bg-[#B04FFD] flex items-center justify-center pl-7 pr-8 text-white w-fit py-2.5 space-x-1.5">
+        <CustomerReply />
+      </div>
+
+      <div className="h-6 w-[272px] flex">
+        <div className="flex-grow h-full" />
+        <div className="flex-grow h-full border-l-2 edge" />
+      </div>
+
+      <div className="flex justify-center w-[272px]">
+        <div className="rounded-full bg-purple-100 high-res-border border-purple-200 hover:border-purple-400 flex items-center justify-center pl-7 pr-8 text-purple-400 hover:text-purple-600 w-fit py-2.5 space-x-1.5 cursor-pointer">
           <Stars01 width="12" height="12" />
           <div className="text-xs">Intent Analysis</div>
         </div>
@@ -52,11 +67,11 @@ export default function IntentAnalysisStack({
       </div>
 
       <div className="flex w-fit">
-        <div className="h-3 w-[272px] flex">
+        <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full" />
           <div className="flex-grow h-full border-l-2 edge" />
         </div>
-        <div className="h-3 w-[272px] flex">
+        <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full" />
           <div className="flex-grow h-full border-l-2 edge" />
         </div>

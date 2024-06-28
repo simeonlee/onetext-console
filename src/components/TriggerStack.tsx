@@ -8,7 +8,7 @@ export default function TriggerStack({}: TriggerStackProps) {
         <div className="text-[11px] text-gray-400 font-medium">Trigger</div>
         <div className="text-xs">
           <span className="text-[#ACAEB0]">When someone joins</span>{" "}
-          <span className="text-gray-900 font-medium">
+          <span className="text-gray-800 font-medium">
             Customers who&apos;ve expressed pizza intent
           </span>
         </div>

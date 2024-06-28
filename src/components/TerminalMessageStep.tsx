@@ -38,7 +38,9 @@ export default function TerminalMessageStep({
           </div>
           <div className="text-[10px] font-mono text-gray-200">{step.id}</div>
         </div>
-        <div className="text-white">{step.message}</div>
+        <div className="text-white truncate max-h-6 overflow-hidden">
+          {step.message}
+        </div>
       </div>
     </div>
   );
