@@ -18,11 +18,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         className="flex"
         style={{
           height: `calc(100vh - ${topNavHeight}px)`,
-          width: `calc(100vw - ${leftNavWidth}px)`,
         }}
       >
         <AppDesktopLeftNav />
-        <div className="overflow-y-scroll scrollbar-none">{children}</div>
+        <div style={{ width: `calc(100vw - ${leftNavWidth}px)` }}>
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,11 @@ import TerminalMessageStep from "~/components/TerminalMessageStep";
 import NullStepSpace from "~/components/NullStepSpace";
 import IntentAnalysisStack from "~/components/IntentAnalysisStack";
 import TriggerStack from "~/components/TriggerStack";
+import FlowEditorRightNav from "~/components/nav/FlowEditorRightNav";
+import {
+  APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
+  APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
+} from "~/constants/base";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,32 +28,54 @@ export default function Home() {
     flowData?.steps?.find((step) => step.id === "cancel") || ({} as any);
 
   return (
-    <main className={`min-h-screen py-12 px-24 ${inter.className}`}>
-      <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
-      <div className="text-[32px] mb-10 font-display">Flow Editor</div>
+    <main className={`${inter.className}`}>
+      <div
+        className="flex"
+        style={{
+          height: `calc(100vh - ${topNavHeight}px)`,
+        }}
+      >
+        <div
+          className="overflow-scroll py-12 px-24 w-full"
+          style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
+        >
+          <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
+          <div className="text-[32px] mb-10 font-display">Flow Editor</div>
 
-      <div>
-        <TriggerStack />
-        <MessageStepStack step={initialStep} />
-        <IntentAnalysisStack step={initialStep} />
-        <div className="flex items-start">
-          <MessageStepStack step={initialStep} />
-          <TerminalMessageStep type="cancel" step={terminalCancelStep} />
+          <div>
+            <div className="flex items-start">
+              <TriggerStack />
+            </div>
+            <div className="flex items-start">
+              <MessageStepStack step={initialStep} />
+            </div>
+            <div className="flex items-start">
+              <IntentAnalysisStack step={initialStep} />
+            </div>
+            <div className="flex items-start">
+              <MessageStepStack step={initialStep} />
+              <TerminalMessageStep type="cancel" step={terminalCancelStep} />
+            </div>
+            <div className="flex items-start">
+              <IntentAnalysisStack step={initialStep} />
+            </div>
+            <div className="flex items-start">
+              <TerminalMessageStep type="done" step={terminalDoneStep} />
+              <MessageStepStack step={initialStep} />
+            </div>
+            <div className="flex items-start">
+              <NullStepSpace />
+              <IntentAnalysisStack step={initialStep} />
+            </div>
+            <div className="flex items-start">
+              <NullStepSpace />
+              <TerminalMessageStep type="done" step={terminalDoneStep} />
+              <TerminalMessageStep type="done" step={terminalDoneStep} />
+            </div>
+          </div>
         </div>
-        <IntentAnalysisStack step={initialStep} />
-        <div className="flex items-start">
-          <TerminalMessageStep type="done" step={terminalDoneStep} />
-          <MessageStepStack step={initialStep} />
-        </div>
-        <div className="flex items-start">
-          <NullStepSpace />
-          <IntentAnalysisStack step={initialStep} />
-        </div>
-        <div className="flex items-start">
-          <NullStepSpace />
-          <TerminalMessageStep type="done" step={terminalDoneStep} />
-          <TerminalMessageStep type="done" step={terminalDoneStep} />
-        </div>
+
+        <FlowEditorRightNav />
       </div>
     </main>
   );
