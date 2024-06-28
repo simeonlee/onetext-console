@@ -11,7 +11,6 @@ import {
 import {
   APP_DESKTOP_TOP_NAV_HEIGHT as topNavHeight,
   APP_DESKTOP_RIGHT_NAV_WIDTH as rightNavWidth,
-  FLOW_EDITOR_COLUMN_GAP,
 } from "~/constants/base";
 import MessageStep from "~/components/MessageStep";
 

@@ -1,12 +1,17 @@
 import CustomerReply from "./CustomerReply";
+import { DownAndRightEdges, DownEdge, RightAndDownEdge } from "./Edges";
 import Stars01 from "./icons/Stars01";
-import { FLOW_EDITOR_COLUMN_WIDTH } from "~/constants/base";
 
 interface IntentAnalysisStackProps {
   step: {
     id: string;
     type: string;
     message: string;
+    events: {
+      type: string;
+      intent: string;
+      nextStepID: string;
+    }[];
   };
 }
 
@@ -15,20 +20,18 @@ export default function IntentAnalysisStack({
 }: IntentAnalysisStackProps) {
   return (
     <div className="flex flex-col items-start">
-      <div className="flow-col-width flow-col-margin flex h-6">
-        <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 edge" />
-      </div>
+      {/* The following renders a singular vertical straight line */}
+      <DownEdge />
 
+      {/* Customer Reply */}
       <div className="flow-col-width flow-col-margin flex justify-center">
         <CustomerReply />
       </div>
 
-      <div className="flow-col-width flow-col-margin flex h-6">
-        <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 edge" />
-      </div>
+      {/* The following renders a singular vertical straight line */}
+      <DownEdge />
 
+      {/* Intent Analysis */}
       <div className="flow-col-width flow-col-margin flex justify-center">
         <div className="rounded-full bg-purple-100 high-res-border border-purple-200 hover:border-purple-400 flex items-center justify-center pl-7 pr-8 text-purple-400 hover:text-purple-600 w-fit py-2.5 space-x-1.5 cursor-pointer">
           <Stars01 width="12" height="12" />
@@ -36,46 +39,31 @@ export default function IntentAnalysisStack({
         </div>
       </div>
 
+      {/* The following renders straight and curved lines connecting intent analysis to the reply intent event chips below */}
       <div className="flex w-fit">
-        <div className="down-and-right flow-col-width-including-padding flex h-6">
-          <div className="flex-grow h-full" />
-          <div className="relative flex-grow h-full">
-            <div className="h-3.5 absolute inset-0 border-l-2 border-b-2 edge rounded-bl-[14px]" />
-            <div className="h-6 absolute inset-0 border-l-2 edge" />
-          </div>
-        </div>
-
-        <div className="right-and-down flow-col-width-including-padding flex h-6">
-          <div className="flex-grow h-full">
-            <div className="h-3" />
-            <div className="h-3 border-r-2 border-t-2 edge rounded-tr-[14px]" />
-          </div>
-          <div className="flex-grow h-full" />
-        </div>
+        <DownAndRightEdges />
+        <RightAndDownEdge />
       </div>
 
+      {/* The following renders reply intent event chips */}
       <div className="flex w-fit">
-        <div className="flow-col-width flow-col-margin flex justify-center">
-          <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
-            Affirmative
+        {step.events.map((event, index) => (
+          <div
+            key={index}
+            className="flow-col-width flow-col-margin flex justify-center"
+          >
+            <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
+              {event.intent.split(":")[0]}
+            </div>
           </div>
-        </div>
-        <div className="flow-col-width flow-col-margin flex justify-center">
-          <div className="rounded-full high-res-border border-purple-100 bg-white text-[11px] text-purple-400 w-fit px-2.5 py-0.5 flex items-center justify-center leading-[18px]">
-            Negative
-          </div>
-        </div>
+        ))}
       </div>
 
+      {/* The following renders straight lines down from each event */}
       <div className="flex w-fit">
-        <div className="flow-col-width flow-col-margin flex h-6">
-          <div className="flex-grow h-full" />
-          <div className="flex-grow h-full border-l-2 edge" />
-        </div>
-        <div className="flow-col-width flow-col-margin flex h-6">
-          <div className="flex-grow h-full" />
-          <div className="flex-grow h-full border-l-2 edge" />
-        </div>
+        {step.events.map((_, index) => (
+          <DownEdge key={index} />
+        ))}
       </div>
     </div>
   );
