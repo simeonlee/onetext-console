@@ -36,7 +36,7 @@ export default function Home() {
         }}
       >
         <div
-          className="overflow-scroll py-12 px-20 2xl:px-24 w-full"
+          className="overflow-scroll pt-12 pb-56 px-20 2xl:px-24 w-full"
           style={{ width: `calc(100vw - ${rightNavWidth}px)` }}
         >
           <div className="text-sm font-medium text-[#1A76FC]">Flows</div>
