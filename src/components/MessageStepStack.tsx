@@ -39,7 +39,7 @@ export default function MessageStepStack({ step }: MessageStepStackProps) {
 
       <div className="h-6 w-[272px] flex">
         <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 border-gray-200" />
+        <div className="flex-grow h-full border-l-2 edge" />
       </div>
 
       <div className="flex justify-center w-[272px]">
@@ -48,7 +48,7 @@ export default function MessageStepStack({ step }: MessageStepStackProps) {
 
       <div className="h-6 w-[272px] flex">
         <div className="flex-grow h-full" />
-        <div className="flex-grow h-full border-l-2 border-gray-200" />
+        <div className="flex-grow h-full border-l-2 edge" />
       </div>
     </div>
   );

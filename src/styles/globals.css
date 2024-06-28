@@ -106,3 +106,7 @@ input::placeholder,
 textarea::placeholder {
   color: theme("colors.neutral.300");
 }
+
+.edge {
+  border-color: theme("colors.gray.200");
+}

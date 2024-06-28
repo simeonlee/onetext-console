@@ -24,15 +24,15 @@ export default function IntentAnalysisStack({
         <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full" />
           <div className="relative flex-grow h-full">
-            <div className="h-3.5 absolute inset-0 border-l-2 border-b-2 border-gray-200 rounded-bl-[14px]" />
-            <div className="h-6 absolute inset-0 border-l-2 border-gray-200" />
+            <div className="h-3.5 absolute inset-0 border-l-2 border-b-2 edge rounded-bl-[14px]" />
+            <div className="h-6 absolute inset-0 border-l-2 edge" />
           </div>
         </div>
 
         <div className="h-6 w-[272px] flex">
           <div className="flex-grow h-full">
             <div className="h-3" />
-            <div className="h-3 border-r-2 border-t-2 border-gray-200 rounded-tr-[14px]" />
+            <div className="h-3 border-r-2 border-t-2 edge rounded-tr-[14px]" />
           </div>
           <div className="flex-grow h-full" />
         </div>
@@ -54,11 +54,11 @@ export default function IntentAnalysisStack({
       <div className="flex w-fit">
         <div className="h-3 w-[272px] flex">
           <div className="flex-grow h-full" />
-          <div className="flex-grow h-full border-l-2 border-gray-200" />
+          <div className="flex-grow h-full border-l-2 edge" />
         </div>
         <div className="h-3 w-[272px] flex">
           <div className="flex-grow h-full" />
-          <div className="flex-grow h-full border-l-2 border-gray-200" />
+          <div className="flex-grow h-full border-l-2 edge" />
         </div>
       </div>
     </div>
